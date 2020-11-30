@@ -1,5 +1,9 @@
 import random, sys, getopt, os, time
 
+def show_help():
+    print ('Please type python', sys.argv[0], ' and use -v for verbose output and/or -o <filename> to save the stats to a file')
+    sys.exit(0)
+
 values = []
 #define hashmap for the modifiers
 modifiers = {
@@ -31,9 +35,11 @@ verbose = False
 output = ''
 
 #Commandline arguments v: verbose o: save to path
-opts, rest = getopt.getopt(sys.argv[1:], "vo:")
+opts, rest = getopt.getopt(sys.argv[1:], "hvo:")
 
 for opt, arg in opts:
+    if opt == '-h':
+        show_help()
     if opt == '-v':
         verbose = True
     if opt == '-o':
